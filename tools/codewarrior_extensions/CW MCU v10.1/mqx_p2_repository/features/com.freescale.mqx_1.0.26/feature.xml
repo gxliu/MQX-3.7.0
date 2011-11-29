@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.freescale.mqx"
+      label="MQX"
+      version="1.0.26"
+      provider-name="FREESCALE">
+
+   <description url="http://www.example.com/description">
+      Provides MQX Kernel Aware debugger plug-in, Performance Tool
+for MQX and MQX Project Wizard.
+   </description>
+
+   <copyright>
+      Copyright (c) Freescale Semiconductor;
+Copyright (c) Embedded Access Inc.;
+Copyright (c) ARC International;
+This software incorporates JFreeChart, (C)opyright 2000-2009
+byObject Refinery Limited and Contributors.
+   </copyright>
+
+   <license>
+      Please see www.freescale.com for license information.
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="com.freescale.system.browser"/>
+      <import plugin="com.freescale.core.debugger.cdt"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="com.freescale.core.debugger.ui.cdt"/>
+      <import plugin="org.eclipse.cdt.debug.core"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="com.freescale.core.debugger.cdt" version="6.12.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.ui" version="3.4.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.swt" version="3.4.1" match="greaterOrEqual"/>
+      <import plugin="com.freescale.core.ide.newprojectwizard"/>
+      <import plugin="com.freescale.core.ide.wizard.ui"/>
+      <import plugin="org.eclipse.cdt.managedbuilder.core"/>
+      <import plugin="com.freescale.core.ide.cdt.toolchain"/>
+      <import plugin="org.eclipse.ui.intro.universal"/>
+      <import plugin="org.eclipse.ui.intro"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.debug.core"/>
+      <import plugin="org.eclipse.ui.ide"/>
+   </requires>
+
+   <plugin
+         id="com.freescale.debugger.kernel.aware.mqx"
+         download-size="0"
+         install-size="0"
+         version="1.0.8"
+         unpack="false"/>
+
+   <plugin
+         id="com.freescale.debugger.kernel.aware.mqx.corba"
+         download-size="0"
+         install-size="0"
+         version="1.0.8"
+         unpack="false"/>
+
+   <plugin
+         id="com.freescale.mqx.perftool"
+         download-size="0"
+         install-size="0"
+         version="1.0.8"
+         unpack="false"/>
+
+   <plugin
+         id="de.vogella.jfreechart.libs"
+         download-size="0"
+         install-size="0"
+         version="1.0.8"
+         unpack="false"/>
+
+   <plugin
+         id="com.freescale.mcu.mqxprojectwizard1.mqx3.7"
+         download-size="0"
+         install-size="0"
+         version="1.0.36"
+         unpack="false"/>
+
+</feature>

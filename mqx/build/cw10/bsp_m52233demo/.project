@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>bsp_m52233demo</name>
+	<comment>MQX project</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>?name?</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildCommand</key>
+					<value>${system:ECLIPSE_HOME}/../gnu/bin/make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>${ProjDirPath}/Debug</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>true</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Generic IO Drivers</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>m52233demo User Config</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Debug/bsp_m52233demo_d.a</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/lib/m52233demo.cw10/bsp/bsp_m52233demo_d.a</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/eds</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_dun</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_mem</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_null</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/tfs</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/int_ctrl</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/timer</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Release/bsp_m52233demo.a</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/lib/m52233demo.cw10/bsp/bsp_m52233demo.a</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/boot.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/cw/boot.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/bsp.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/bsp.h</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/bsp_init.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/bsp_init.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/bsp_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/bsp_prv.h</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/bsp_rev.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/bsp_rev.h</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/cw.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/cw/cw.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/enet_ini.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/enet_ini.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/get_usec.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/get_usec.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/gpio_init.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/gpio_init.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_bsp.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_bsp.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_i2c0.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_i2c0.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_spi0.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_spi0.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_uart0.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_uart0.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_uart1.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_uart1.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/init_uart2.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/init_uart2.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/m52233demo.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/m52233demo.h</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/mqx_init.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/mqx_init.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/mqx_main.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/mqx_main.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo BSP Files/vectors.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/bsp/m52233demo/vectors.c</locationURI>
+		</link>
+		<link>
+			<name>m52233demo User Config/user_config.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/config/m52233demo/user_config.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/eds/edserial.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/edserial/edserial.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_dun/io_dun.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_dun/io_dun.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_dun/io_dun.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_dun/io_dun.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_mem/io_mem.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_mem/io_mem.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_mem/io_mem.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_mem/io_mem.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_mem/iomemprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_mem/iomemprv.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_null/io_null.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_null/io_null.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_null/io_null.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_null/io_null.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/io_null/ionulprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/io_null/ionulprv.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/io_pcb.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/io_pcb.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/io_pcb.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/io_pcb.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/io_pcb2.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/io_pcb2.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/iop_inst.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/iop_inst.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/iopcbprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/iopcbprv.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcb_mqxa.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/mqxa/pcb_mqxa.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcb_mqxa.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/mqxa/pcb_mqxa.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcb_shm.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/shmem/pcb_shm.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcb_shm.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/shmem/pcb_shm.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcbmqxav.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/mqxa/pcbmqxav.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/pcb/pcbshmv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/pcb/shmem/pcbshmv.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/tfs/tfs.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/tfs/tfs.c</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/tfs/tfs.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/tfs/tfs.h</locationURI>
+		</link>
+		<link>
+			<name>Generic IO Drivers/tfs/tfs_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/tfs/tfs_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/adc.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/adc.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/adc.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/adc.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/adc_conf.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/adc_conf.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/adc_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/adc_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/mcf522xx</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enaddr.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enaddr.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enclose.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enclose.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enerr.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enerr.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enet.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enet.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enet_rev.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enet_rev.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enetprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enetprv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/eninit.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/eninit.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enjoin.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enjoin.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enleave.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enleave.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enmediactl.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enmediactl.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enopen.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enopen.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enrecv.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enrecv.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/ensend.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/ensend.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enstat.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enstat.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enstop.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enstop.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/enutil.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/enutil.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/ethernet.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/ethernet.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5223</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/phy</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/flashx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/flashx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/flashx.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/flashx.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/flashxprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/flashxprv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/freescale</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/io_gpio.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/io_gpio.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/io_gpio.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/io_gpio.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/io_gpio_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/io_gpio_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/mcf5223x</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/i2c.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/i2c.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/i2c_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/i2c_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/i2c_mcf52xx.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/i2c_mcf52xx.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/i2c_mcf52xx_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/i2c_mcf52xx_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/int</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/polled</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/int_ctrl/int_ctrl_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/int_ctrl/int_ctrl_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/int_ctrl/int_ctrl_mcf5223.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/int_ctrl/int_ctrl_mcf5223.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc/rtc.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/rtc/rtc.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc/rtc.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/rtc/rtc.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc/rtc_common.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/rtc/rtc_common.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc/rtc_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/rtc/rtc_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/rtc/rtc_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/rtc/rtc_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/int</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/io_sinit.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/io_sinit.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/polled</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/serial.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/serial.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/serl_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/serl_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/serl_mcf52xx.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/serl_mcf52xx.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/int</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/polled</name>
+			<type>2</type>
+			<locationURI>group:/group</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/spi.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/spi.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/spi_mcf5223_qspi.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/spi_mcf5223_qspi.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/spi_mcf5xxx_qspi.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/spi_mcf5xxx_qspi.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/spi_mcf5xxx_qspi_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/spi_mcf5xxx_qspi_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/timer/timer_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/timer/timer_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/timer/timer_mcf5223.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/timer/timer_mcf5223.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/mcf522xx/adc_mcf522xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/mcf522xx/adc_mcf522xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/mcf522xx/adc_mcf522xx.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/mcf522xx/adc_mcf522xx.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/mcf522xx/adc_mcf522xx_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/mcf522xx/adc_mcf522xx_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/adc/mcf522xx/adt_pit_mcf522xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/adc/mcf522xx/adt_pit_mcf522xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5223/mcf5223_fec.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5223_fec.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5223/mcf5223_fec.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5223_fec.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_init.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_init.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_join.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_join.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_mii.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_mii.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_receive.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_receive.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_rejoin.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_rejoin.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_rev.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_rev.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_send.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_send.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_stop.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_stop.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/mcf5xxx/mcf5xxx_fec_util.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/mcf5xxx_fec/mcf5xxx_fec_util.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/phy/phy_mcf5223x.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/Phy/phy_mcf5223x.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/enet/phy/phy_mcf5223x.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/enet/Phy/phy_mcf5223x.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/freescale/flash_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/freescale/flash_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/freescale/flash_mcf5223.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/freescale/flash_mcf5223.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/freescale/flash_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/freescale/flash_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/flashx/freescale/flash_mcf52xx.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/flashx/freescale/flash_mcf52xx.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/mcf5223x/io_gpio_mcf5223.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/mcf5223/io_gpio_mcf5223.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/mcf5223x/io_gpio_mcf5223.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/mcf5223/io_gpio_mcf5223.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/gpio/mcf5223x/io_gpio_mcf5223_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/gpio/mcf5223/io_gpio_mcf5223_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/int/i2c_int.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/int/i2c_int.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/int/i2c_int_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/int/i2c_int_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/int/i2c_int_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/int/i2c_int_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/polled/i2c_pol.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/polled/i2c_pol.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/polled/i2c_pol_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/polled/i2c_pol_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/i2c/polled/i2c_pol_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/i2c/polled/i2c_pol_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/int/serinprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/serinprv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/int/serl_int.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/int/serl_int.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/int/serl_int_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/int/serl_int_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/polled/serl_pol.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/polled/serl_pol.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/polled/serl_pol_mcf52xx.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/polled/serl_pol_mcf52xx.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/serial/polled/serplprv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/serial/serplprv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/int/spi_int.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/int/spi_int.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/int/spi_int_mcf5xxx_qspi.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/int/spi_int_mcf5xxx_qspi.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/int/spi_int_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/int/spi_int_prv.h</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/polled/spi_pol.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/polled/spi_pol.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/polled/spi_pol_mcf5xxx_qspi.c</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/polled/spi_pol_mcf5xxx_qspi.c</locationURI>
+		</link>
+		<link>
+			<name>Peripheral IO Drivers/spi/polled/spi_pol_prv.h</name>
+			<type>1</type>
+			<locationURI>MQX_ROOT_DIR/mqx/source/io/spi/polled/spi_pol_prv.h</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>MQX_ROOT_DIR</name>
+			<value>${PROJECT_LOC}/../../../..</value>
+		</variable>
+		<variable>
+			<name>PROJDIRPATH</name>
+			<value>${PROJECT_LOC}/../..</value>
+		</variable>
+	</variableList>
+</projectDescription>

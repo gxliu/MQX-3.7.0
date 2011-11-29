@@ -1,0 +1,152 @@
+
+MEMORY
+{
+#   nandflash_boot     (RW) : ORIGIN = 0x00000000, LENGTH = 0x00000F8F  # boot pages
+#   nandflash_code     (RX) : ORIGIN = 0x00002800, LENGTH = 0x0FFFD800  # the rest of the NAND Flash
+   sdram_vectors      (RW) : ORIGIN = 0x40100000, LENGTH = 0x00000600  # SDRAM  - Vector table, due to the uboot the start address shifted by 0x100000
+   sdram_code         (RWX): ORIGIN = 0x40100600, LENGTH = 0x03EFFA00  # SDRAM  - Code + Const data (cached)
+   sdram_ram_cached   (RW) : ORIGIN = 0x44000000, LENGTH = 0x02000000  # SDRAM  - RW data uncached   
+   sdram_ram_uncached (RW) : ORIGIN = 0x46000000, LENGTH = 0x02000000  # SDRAM  - RW data cached
+   sram               (RW) : ORIGIN = 0x80000000, LENGTH = 0x00010000  # SRAM
+
+
+   # kernel space starts after RAM variables (Location of MQX Kernel data + MQX heap), end of cached memory
+   end_of_kd          (RW) : ORIGIN = 0x45FFFFF0, LENGTH = 0x00000000
+   # end of uncached memory space
+   end_of_uncached    (RW) : ORIGIN = 0x47FFFFF0, LENGTH = 0x00000000
+
+   # Boot stack
+   bstack             (RW) : ORIGIN = 0x8000FA00, LENGTH = 0x00000500  # Boot stack
+   end_bstack         (RW) : ORIGIN = 0x8000FFF0, LENGTH = 0x00000000
+}
+
+KEEP_SECTION { .vectors_rom }
+FORCE_ACTIVE { _warm_start }
+
+SECTIONS
+{
+   ___EXTERNAL_SDRAM_BASE = 0x40000000;
+   ___EXTERNAL_SDRAM_SIZE = 0x08000000;
+
+   ___INTERNAL_SRAM_BASE  = 0x80000000;
+   ___INTERNAL_SRAM_SIZE  = 0x00010000;
+    
+   ___EXTERNAL_MRAM_BASE  = 0x10000000;
+   ___EXTERNAL_MRAM_SIZE  = 0x00080000;
+   ___EXTERNAL_MRAM_ROM_BASE = 0x10000000;
+   ___EXTERNAL_MRAM_ROM_SIZE = 0x00060000;
+   ___EXTERNAL_MRAM_RAM_BASE = 0x10060000;
+   ___EXTERNAL_MRAM_RAM_SIZE = 0x00020000;
+
+   # MQX link time configurations
+   ___DEFAULT_PROCESSOR_NUMBER       = 1;
+   ___DEFAULT_INTERRUPT_STACK_SIZE   = 10240;
+   ___KERNEL_DATA_VERIFY_ENABLE      = 0;    # Test SDRAM read/write
+
+    .vectors :
+    {
+        ___CACHED_CODE_START = .;
+        ___VECTOR_TABLE_ROM_START = .;
+        ___VECTOR_TABLE_RAM_START = .;
+        *(.vectors_rom)
+        . = ALIGN (0x4); 
+    } > sdram_vectors
+    
+   .main_application :
+   {
+      *(.warm_start)
+      *(KERNEL)
+      *(S_BOOT)
+      *(IPSUM)
+      *(.text)
+      *(.init)
+      *(.fini)
+      *(.eini)
+      *(.ctors)
+      *(.dtors)
+      .= ALIGN(0x4);
+      *(.rodata)
+      .= ALIGN(0x4);
+      *(.rdata)
+      ___COPY_OF_DATA = .;
+      
+      . = ALIGN(0x10);
+      ___CACHED_CODE_END = .;
+   } > sdram_code
+
+   .main_application_data :
+   {
+      . = ALIGN(0x10);
+      ___CACHED_DATA_START = .;
+      *(.exception)
+      . = ALIGN(0x4);
+      __exception_table_start__ = .;
+      EXCEPTION
+      __exception_table_end__ = .;
+
+      ___sinit__ = .;
+      STATICINIT
+
+      __START_DATA = .;
+      *(.data)
+      __END_DATA = .;
+
+      __START_SDATA = .;
+      *(.sdata)
+      __END_SDATA = .;
+
+      __SDA_BASE  = .;
+      __SDA_BASE_ = __SDA_BASE;
+
+      __START_SBSS = .;
+      *(.sbss)
+      *(SCOMMON)
+      __END_SBSS = .;
+
+      __START_BSS = .;
+      *(.bss)
+      *(COMMON)
+      __END_BSS = .;
+   } > sdram_ram_cached
+
+   .kernel_data :
+   {
+      ___KERNEL_DATA_START = ALIGN(0x10);
+   }
+   
+   .end_of_kernel_data :
+   {
+      ___KERNEL_DATA_END = .;
+      ___CACHED_DATA_END = .;
+   } > end_of_kd
+   
+   .uncached_memory :
+   {
+      ___UNCACHED_DATA_START = ALIGN(0x10);
+   } > sdram_ram_uncached
+   
+   .uncached_memory_end :
+   {
+      ___UNCACHED_DATA_END = .;
+   } > end_of_uncached
+   
+   .boot_stack :
+   {
+      _stack_end = .;
+   } > bstack
+   .end_of_boot_stack:
+   {
+      _stack_addr  = .;
+      __SP_INIT    = .;
+      ___BOOT_STACK_ADDRESS = .;
+   } > end_bstack
+   
+    .sram_sec :
+    {
+        *(.usb_hs_buffer)
+    } > sram
+
+   __S_romp = 0x0;              # no ROM in this example
+   
+   ___EXTERNAL_NANDFLASH_UNUSED_AREA_START = 0;
+}

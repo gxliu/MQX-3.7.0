@@ -1,0 +1,174 @@
+MEMORY
+{
+   // Physical layout - hardware dependent 
+   SDRAM:           org = 0x00000000, len = 0x10000000 // 256 MB DDR SDRAM
+   SRAM:            org = 0x30000000, len = 0x00008000 // 32K Internal SRAM
+   IMMR:            org = 0x80000000, len = 0x00100000 // 1 MB
+   FLASH:           org = 0xfff00000, len = 0x00800000 //  8 MB 
+
+   // Logical layout - change to suit application if required
+   //rom:             org = 0x00010000, len = 0x003FFF00 
+   //ram:             org = 0x00410000, len = 0x00600000 
+   //kernel_data:     org = 0x00A10000, len = 0x08000000 
+   rom:             org = 0x00010000, len = 0x003EFF00 
+   ram:             org = 0x00400000, len = 0x01c00000 
+   kernel_data:     org = 0x02000000, len = 0x06000000 
+   
+   /* Page table memory - 2MB for 256MB mapped */
+   /* If not using page tables, set len to 0 */
+//   page_tables:     org = 0x01000000, len = 0x00200000 
+   page_tables:     org = 0x01000000, len = 0x0 
+
+   /* Physical memory backing the virtual context */
+   /* If not using virtual memory, set len to 0 */
+//   virtual_ram: org = 0x01200000, len = 0x00100000 
+    virtual_ram: org = 0x01200000, len = 0x0 
+      
+   // cached vs. non cached region -
+   // maps to logical layout above. the BSP will set up these  two regions.
+   // if you need more, the BSP will need to set any addition regions up too.
+   cached_ram:      org = 0x00000000, len = 0x08000000 // 128 Meg cached RAM
+   uncached_ram:    org = 0x08000000, len = 0x00800000 //  8 Meg uncached RAM
+}
+
+SECTIONS
+{
+   GROUP : {
+      .code (TEXT) :
+	{
+	* (.warm_start)
+		. = ALIGN(0x100);
+	* (.vector0100)
+		. = ALIGN(0x100);
+	* (.vector0200)
+		. = ALIGN(0x100);
+	* (.dsExcpt)
+		. = ALIGN(0x100);
+	* (.isExcpt)
+		. = ALIGN(0x100);
+	* (.vector0500)
+		. = ALIGN(0x100);
+	* (.vector0600)
+		. = ALIGN(0x100);
+	* (.vector0700)
+		. = ALIGN(0x100);
+	* (.vector0800)
+		. = ALIGN(0x100);
+	* (.vector0900)
+		. = ALIGN(0x100);
+	* (.vector0A00)
+		. = ALIGN(0x100);
+		. = . +0x100;
+	* (.vector0C00)
+		. = ALIGN(0x100);
+		. = . +0x300;
+	* (itlb_miss)
+		. = ALIGN(0x100);
+	* (dtlb_miss_load)
+		. = ALIGN(0x100);
+	* (dtlb_miss_store)
+		. = ALIGN(0x100);
+	* (.vector1300)
+		. = ALIGN(0x100);
+	* (.vector1400)
+		. = ALIGN(0x100);
+        * (DISPATCH)
+        * (IPSUM)
+	* (.text)
+      	* (.eini)
+        * (.fini)
+      	* (.init)
+	* (tlb_data_violation)
+	* (tlb_inst_violation)
+   * (.boot_header)
+   * (.cold_start)	
+   * (.bootstrap_nand_loader)
+   * (.nand_download)
+   * (.boot_loader)
+	}
+      .ctors (CONST) : {}
+      .dtors (CONST) : {}
+      .rodata (CONST) : {
+         *(.rdata)
+         *(.rodata)
+      }
+      extab : {}
+      extabindex : {}
+   } > rom
+
+   GROUP : {
+      .rosdata : {}
+      .sdata : {}
+      .sbss : {}
+   } > ram
+   GROUP : {
+      .rosdata2 : {}
+      .sdata2 : {}
+      .sbss2 : {}
+   } > ram
+   GROUP : {
+      .data : {}
+      .bss : {}
+      .image (DATA) : 
+      {
+         __START_IMAGE_DATA =.;
+         * (.image_data)      
+      }
+   } > ram
+
+}
+
+__LOADER_DDR_START      = 0x00000000;
+__BOOT_ROM_START        = 0x00000000;
+__NAND_BOOT_DST         = 0x00000000;
+__NAND_BOOT_START       = 0x00000000;
+__NAND_BASE_ADDR        = 0x40000000;
+__NAND_BOOT_BASE_ADDR   = 0x40000000;
+__SRAM_TO_NAND_SIZE     = 0x00000000;
+__TEXT_CODE_SIZE        = 0x00000000;
+__BOOTSTRAP_CODE_SIZE   = 0x00000000;
+__RAM_CODE_SIZE         = 0x00000000;
+__START_TEXT_CODE       = 0x00000000;
+__START_SRAM_TO_NAND    = 0x00000000;
+__START_ROSDATA         = 0x00000000;
+__END_TEXT_CODE         = 0x00000000;
+__END_DATA_BSS          = 0x00000000;
+
+__SDRAM_BASE = ADDR(SDRAM);
+__SDRAM_SIZE = SIZEOF(SDRAM);
+
+__SRAM_BASE = ADDR(SRAM);
+__SRAM_SIZE = SIZEOF(SRAM);
+
+__IMMR_BASE = ADDR(IMMR);
+__IMMR_SIZE = SIZEOF(IMMR);
+
+
+__DEFAULT_PROCESSOR_NUMBER = 1;
+__KERNEL_DATA_VERIFY_ENABLE = 0;
+__DEFAULT_INTERRUPT_STACK_SIZE = 4096;
+__EXTERNAL_CLOCK_SPEED = 33333333;
+
+__CACHED_DATA_START = ADDR(cached_ram);
+__CACHED_DATA_SIZE = SIZEOF(cached_ram);
+__CACHED_DATA_END = ADDR(cached_ram)+SIZEOF(cached_ram);
+
+__UNCACHED_DATA_START = ADDR(uncached_ram);
+__UNCACHED_DATA_SIZE = SIZEOF(uncached_ram);
+__UNCACHED_DATA_END = ADDR(uncached_ram)+SIZEOF(uncached_ram);
+
+_stack_addr = ADDR(ram) + SIZEOF(ram);
+__SP_INIT   = ADDR(ram) + SIZEOF(ram);
+_stack_end  = _stack_addr - 0x1000;
+
+__KERNEL_DATA_START = ADDR(kernel_data);
+__KERNEL_DATA_END   = ADDR(kernel_data) + SIZEOF(kernel_data) - 1;
+
+__PAGE_TABLE_START  = ADDR(page_tables);
+__PAGE_TABLE_SIZE   = SIZEOF(page_tables);
+
+__VIRTUAL_MEMORY_START = ADDR(virtual_ram);
+__VIRTUAL_MEMORY_SIZE  = SIZEOF(virtual_ram);
+
+
+/* EOF */

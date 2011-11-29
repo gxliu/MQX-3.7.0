@@ -1,0 +1,185 @@
+
+MEMORY
+{
+   # 256K FLASH from 0x0000_0000 to 0x0003_FFFF
+   vectorrom   (RX): ORIGIN = 0x00000000, LENGTH = 0x000003FC  
+   cfmprotrom  (RX): ORIGIN = 0x00000400, LENGTH = 0x00000020
+   rom         (RX): ORIGIN = 0x00000420, LENGTH = 0x0003FBE0  # Code + Const data  
+   # 0x0004_0000 to 0x0030_0000 is available for On Chip Expansion
+   # 8K USB BOOT ROM from 0x0030_0000 to 0x30_1FFF   
+   usbbootrom  (RX): ORIGIN = 0x00300000, LENGTH = 0x00002000  
+   # 0x0030_2000 to 0x003F_FFFF is reserved
+   # 0x0040_0000 to 0x007F_FFFF is reserved
+   # 32K SRAM from 0x0080_0000 to 0x009F_FFFF
+   # In MM256 RAM is wrapped and repeats every 0x7FFF. 
+   # For example, address 0x(00)80_0000 can also be accessed at 0x(00)80_8000
+   ram         (RW): ORIGIN = 0x00800000, LENGTH = 0x00008000  
+
+   # kernel space starts after RAM variables (Location of MQX Kernel data + MQX heap)
+   end_of_kd   (RW): ORIGIN = 0x00807FF0, LENGTH = 0x00000000 # 10 bytes are for guard band
+   
+   # Boot stack reused by MQX Kernel data
+   bstack      (RW): ORIGIN = 0x00807A00, LENGTH = 0x00000200  # Boot stack
+   end_bstack  (RW): ORIGIN = 0x00807BFF, LENGTH = 0x00000000
+   # 0x00A0_0000 to 0x00BF_FFFF is available for On Chip Expansion
+}
+
+KEEP_SECTION { .vectors_rom, .vectors_ram, .usb_rom, .usb_bdt}
+
+SECTIONS
+{
+    ___INTERNAL_SRAM_BASE  = 0x00800000;
+    ___INTERNAL_SRAM_SIZE  = 0x00008000; #32K SRAM
+    ___INTERNAL_FLASH_BASE = 0x00000000;
+    ___INTERNAL_FLASH_SIZE = 0x00040000; #256K FLASH
+    ___EXTERNAL_MRAM_BASE  = 0x00400000;
+    ___EXTERNAL_MRAM_SIZE  = 0x00080000;
+    ___EXTERNAL_MRAM_ROM_BASE = 0x00400000;
+    ___EXTERNAL_MRAM_ROM_SIZE = 0x00000000;
+    ___EXTERNAL_MRAM_RAM_BASE = 0x00400000;
+    ___EXTERNAL_MRAM_RAM_SIZE = 0x00080000;
+
+    ___IPSBAR              = 0xFFFF8000; # Peripherals
+    ___VECTOR_TABLE_START  = 0x00000000; # Runtime vector table in sram
+   
+   # MQX link time configurations
+   ___DEFAULT_PROCESSOR_NUMBER = 1;
+   ___DEFAULT_INTERRUPT_STACK_SIZE = 1024;
+   ___KERNEL_DATA_VERIFY_ENABLE = 0;    # Test SDRAM read/write
+
+   # Flashx configurations
+   ___FLASHX_SECT_SIZE = 0x400; # there are 256 sectors of 1024 bytes each
+   
+    .vectors :
+    {
+        ___VECTOR_TABLE_ROM_START = .;      # Runtime vector table in sram
+        *(.vectors_rom)
+        . = ALIGN (0x4); 
+    } > vectorrom
+
+    .cfmprotect :
+    {
+        *(.cfmconfig)
+        . = ALIGN (0x4);
+    } > cfmprotrom
+    
+   .main_application :
+   {
+      *(KERNEL)
+      *(S_BOOT)
+      *(IPSUM)
+      *(.text)
+      *(.init)
+      *(.fini)
+      *(.eini)
+      *(.ctors)
+      *(.dtors)
+      .= ALIGN(0x4);
+      *(.rodata)
+      .= ALIGN(0x4);
+      *(.rdata)
+      . = ALIGN(0x4);
+      *(.exception)
+      . = ALIGN(0x4);
+      __exception_table_start__ = .;
+      EXCEPTION
+      __exception_table_end__ = .;
+      ___sinit__ = .;
+      STATICINIT
+
+      .= ALIGN(0x4);
+      __COPY_OF_DATA = .;
+   } > rom
+
+    .usbrom :
+    {
+        *(.usb_rom)
+        . = ALIGN (0x4);
+    } > usbbootrom
+
+   .main_application_data : AT(__COPY_OF_DATA)
+   {
+      . = ALIGN(0x10000);
+      ___VECTOR_TABLE_RAM_START = .;        # Runtime vector table in sram
+      *(.vectors_ram)
+
+      __START_DATA = .;
+      *(.data)
+      __END_DATA = .;
+
+      . = ALIGN(0x4);
+      __START_SDATA = .;
+      *(.sdata)
+      __END_SDATA = .;
+
+      . = ALIGN(0x4);
+      __SDA_BASE  = .;
+      __SDA_BASE_ = __SDA_BASE;
+   } > ram
+
+   .main_application_bss :
+   {
+      __START_SBSS = .;
+      *(.sbss)
+      *(SCOMMON)
+      __END_SBSS = .;
+
+      __START_BSS = .;
+      *(.bss)
+      *(COMMON)
+      __END_BSS = .;
+   } >> ram
+
+   .usb_bdt_section :
+   {
+      . = ALIGN(512);
+      __BDT_BASE = .;
+      *(.usb_bdt)
+      __BDT_END = .;
+   } >> ram
+
+   .kernel_data : #AT(ADDR(.main_application_bss) + SIZEOF(.main_application_bss) + SIZEOF(.usb_bdt_section))
+   {
+      ___KERNEL_DATA_START = ALIGN(0x10);
+   }
+   .end_of_kernel_data :
+   {
+      ___KERNEL_DATA_END = .;
+   } > end_of_kd
+
+   .boot_stack :
+   {
+      _stack_end = .;
+   } > bstack
+   .end_of_boot_stack :
+   {
+      _stack_addr  = .;
+      __SP_INIT    = .;
+      ___BOOT_STACK_ADDRESS = .;
+   } > end_bstack
+
+   # Locate the ROM copy table into ROM after the initialized data
+   _romp_at = __COPY_OF_DATA + SIZEOF(.main_application_data);
+
+   .romp : AT (_romp_at)
+   {
+      __S_romp = _romp_at;
+      WRITEW(__COPY_OF_DATA);   #ROM start address
+      WRITEW(ADDR(.main_application_data));      #RAM start address
+      WRITEW(SIZEOF(.main_application_data));    #size
+      WRITEW(0);
+      WRITEW(0);
+      WRITEW(0);
+   }
+
+    _flashx_start = __COPY_OF_DATA + SIZEOF(.main_application_data) + 
+                SIZEOF(.romp);
+
+    # flashx working area spans across the whole rest of Flash memory
+    ___FLASHX_START_ADDR = (_flashx_start + 0x03ff) / 0x400 * 0x400;
+    ___FLASHX_END_ADDR = ___INTERNAL_FLASH_BASE + ___INTERNAL_FLASH_SIZE;
+
+
+}
+
+/* EOF */

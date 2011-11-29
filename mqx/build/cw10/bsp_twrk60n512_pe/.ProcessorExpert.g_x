@@ -1,0 +1,34 @@
+<CodeGenerationInfo>
+  <GeneratedFilesList>
+    <GeneratedByPE>
+      <File Name="Generated_Code\GPIO1.h" FileDate="2011-03-28, 22:53:22" FileAge="1301345602000" FileType="4475" CompNumb="16" />
+      <File Name="Generated_Code\PWM.h" FileDate="2011-03-28, 22:52:58" FileAge="1301345578000" FileType="4475" CompNumb="57" />
+      <File Name="Generated_Code\PE_Error.h" FileDate="2011-03-28, 22:53:23" FileAge="1301345603000" FileType="4475" />
+      <File Name="Generated_Code\GPIO1.c" FileDate="2011-03-28, 22:53:24" FileAge="1301345604000" FileType="4475" CompNumb="16" />
+      <File Name="Generated_Code\PWM.c" FileDate="2011-03-28, 22:52:55" FileAge="1301345575000" FileType="4475" CompNumb="57" />
+      <File Name="Generated_Code\DA1.h" FileDate="2011-03-28, 22:52:39" FileAge="1301345559000" FileType="4475" CompNumb="52" />
+      <File Name="Documentation\ProcessorExpert_Settings.xml" FileDate="2011-03-29, 10:00:43" FileAge="1301385643125" FileType="3072" />
+      <File Name="Generated_Code\MQX1.h" FileDate="2011-03-28, 22:53:24" FileAge="1301345604000" FileType="4475" CompNumb="8" />
+      <File Name="Generated_Code\DA1.c" FileDate="2011-03-28, 22:52:31" FileAge="1301345551000" FileType="4475" CompNumb="52" />
+      <File Name="Generated_Code\MQX1.c" FileDate="2011-03-28, 22:53:24" FileAge="1301345604000" FileType="4475" CompNumb="8" />
+      <File Name="Generated_Code\PE_LDD.h" FileDate="2011-03-28, 22:52:46" FileAge="1301345566000" FileType="4475" CompNumb="0" />
+      <File Name="Sources\Events.h" FileDate="2011-03-29, 00:21:08" FileAge="1301350868637" FileType="512" />
+      <File Name="Generated_Code\Cpu.h" FileDate="2011-03-28, 22:52:41" FileAge="1301345561000" FileType="4475" CompNumb="2" />
+      <File Name="Documentation\ProcessorExpert.txt" FileDate="2011-03-29, 10:00:43" FileAge="1301385643015" FileType="3072" />
+      <File Name="Documentation\ProcessorExpert_SIGNALS.txt" FileDate="2011-03-17, 22:59:13" FileAge="1300399153331" FileType="3072" />
+      <File Name="Generated_Code\WDog1.h" FileDate="2011-03-28, 22:52:48" FileAge="1301345568000" FileType="4475" CompNumb="54" />
+      <File Name="Generated_Code\TRG.h" FileDate="2011-03-29, 10:00:42" FileAge="1301385642687" FileType="4475" CompNumb="33" />
+      <File Name="Sources\Events.c" FileDate="2011-03-29, 00:21:08" FileAge="1301350868512" FileType="512" />
+      <File Name="Generated_Code\PE_LDD.c" FileDate="2011-03-28, 22:52:43" FileAge="1301345563000" FileType="4475" CompNumb="0" />
+      <File Name="Generated_Code\Cpu.c" FileDate="2011-03-29, 10:00:42" FileAge="1301385642030" FileType="4475" CompNumb="2" />
+      <File Name="Generated_Code\WDog1.c" FileDate="2011-03-28, 22:52:44" FileAge="1301345564000" FileType="4475" CompNumb="54" />
+      <File Name="Generated_Code\IO_Map.h" FileDate="2011-03-28, 22:53:22" FileAge="1301345602000" FileType="4475" />
+      <File Name="Generated_Code\TRG.c" FileDate="2011-03-29, 10:00:42" FileAge="1301385642186" FileType="4475" CompNumb="33" />
+      <File Name="Generated_Code\PE_Const.h" FileDate="2011-03-28, 22:53:23" FileAge="1301345603000" FileType="4475" />
+      <File Name="Project_Settings\Linker_Files\ProcessorExpert.lcf" FileDate="1970-01-01, 01:00:00" FileAge="0" FileType="4" />
+      <File Name="Sources\ProcessorExpert.c" FileDate="1970-01-01, 01:00:00" FileAge="0" FileType="128" />
+      <File Name="Generated_Code\PE_Types.h" FileDate="2011-03-28, 22:53:23" FileAge="1301345603000" FileType="4475" />
+    </GeneratedByPE>
+  </GeneratedFilesList>
+  <CodeGenReference>61</CodeGenReference>
+</CodeGenerationInfo>

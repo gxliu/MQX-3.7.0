@@ -1,0 +1,124 @@
+
+MEMORY
+{   
+   flash         (RW): ORIGIN = 0x00000000, LENGTH = 0x01000000  # FLASH1 
+   sdram         (RW): ORIGIN = 0x40000000, LENGTH = 0x04000000  # SDRAM  
+   sram_vectors  (RW): ORIGIN = 0x80000000, LENGTH = 0x00000420  # SRAM - Vector table
+   sram_code     (RX): ORIGIN = 0x80000420, LENGTH = 0x00005be0  # SRAM - Code + Const data
+   sram_ram      (RW): ORIGIN = 0x80006000, LENGTH = 0x00002800  # SRAM - RW data
+
+   # kernel space starts after RAM variables (Location of MQX Kernel data + MQX heap)
+   end_of_kd   (RW): ORIGIN = 0x80007FF0, LENGTH = 0x00000000
+
+   # Boot stack reused by MQX Kernel data
+   bstack      (RW): ORIGIN = 0x80007A00, LENGTH = 0x00000200  # Boot stack
+   end_bstack  (RW): ORIGIN = 0x80007BF0, LENGTH = 0x00000000
+}
+
+KEEP_SECTION { .vectors_rom }
+
+SECTIONS
+{
+    ___EXTERNAL_SDRAM_BASE = 0x40000000;
+    ___EXTERNAL_SDRAM_SIZE = 0x10000000;
+
+    ___INTERNAL_SRAM_BASE  = 0x80000000;
+    ___INTERNAL_SRAM_SIZE  = 0x00008000;
+
+    ___FLASH1_BASE     = 0x00000000;
+    ___FLASH0_BASE     = 0x04000000;
+
+   
+   # MQX link time configurations
+   ___DEFAULT_PROCESSOR_NUMBER = 1;
+   ___DEFAULT_INTERRUPT_STACK_SIZE = 1024;
+   ___KERNEL_DATA_VERIFY_ENABLE = 0;    # Test SDRAM read/write
+
+	.vectors :
+	{
+        ___VECTOR_TABLE_ROM_START = .;
+        ___VECTOR_TABLE_RAM_START = .;
+		*(.vectors_rom)
+		. = ALIGN (0x4); 
+	} > vectorram
+	
+   .main_application :
+   {
+      *(KERNEL)
+      *(S_BOOT)
+      *(IPSUM)
+      *(.text)
+      *(.init)
+      *(.fini)
+      *(.eini)
+      *(.ctors)
+      *(.dtors)
+      .= ALIGN(0x4);
+      *(.rodata)
+      .= ALIGN(0x4);
+      *(.rdata)
+   } > rom
+
+   .main_application_data :
+   {
+        . = ALIGN(512);
+        __BDT_BASE = .;
+        *(.usb_bdt)
+        __BDT_END = .; 
+   
+      . = ALIGN(0x4);
+      *(.exception)
+      . = ALIGN(0x4);
+      __exception_table_start__ = .;
+      EXCEPTION
+      __exception_table_end__ = .;
+
+      ___sinit__ = .;
+      STATICINIT
+
+      __START_DATA = .;
+      *(.data)
+      __END_DATA = .;
+
+      __START_SDATA = .;
+      *(.sdata)
+      __END_SDATA = .;
+
+      __SDA_BASE  = .;
+      __SDA_BASE_ = __SDA_BASE;
+
+      __START_SBSS = .;
+      *(.sbss)
+      *(SCOMMON)
+      __END_SBSS = .;
+
+      __START_BSS = .;
+      *(.bss)
+      *(COMMON)
+      __END_BSS = .;
+   } > ram
+
+   .kernel_data :
+   {
+      ___KERNEL_DATA_START = ALIGN(0x10);
+   }
+   
+   .end_of_kernel_data :
+   {
+      ___KERNEL_DATA_END = .;
+   } > end_of_kd
+
+   .boot_stack :
+   {
+      _stack_end = .;
+   } > bstack
+   .end_of_boot_stack :
+   {
+      _stack_addr  = .;
+      __SP_INIT    = .;
+      ___BOOT_STACK_ADDRESS = .;
+   } > end_bstack
+
+   __S_romp = 0x0;              # no ROM in this example
+
+}

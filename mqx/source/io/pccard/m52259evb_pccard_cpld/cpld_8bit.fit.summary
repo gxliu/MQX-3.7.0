@@ -1,0 +1,11 @@
+Fitter Status : Successful - Mon Nov 03 15:53:32 2008
+Quartus II Version : 8.0 Build 231 07/10/2008 SP 1 SJ Web Edition
+Revision Name : cpld_8bit
+Top-level Entity Name : cpld_8bit
+Family : MAX II
+Device : EPM240ZM100C6
+Timing Models : Preliminary
+Total logic elements : 3 / 240 ( 1 % )
+Total pins : 59 / 80 ( 74 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

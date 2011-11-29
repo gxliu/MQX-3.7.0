@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APSC_Memento>
+<host>
+<properties>
+<property key="propertySet.[cw.dbg.ct.targetConnLost].RetryConnectionOn" value="false"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].memConfigPath" value="${MQX_ROOT_DIR}\lib\twrmcf52259.cw10\bsp\dbg\twrmcf52259.mem"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.simulator" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_SPECIFY_IP_ENABLED" value="0"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.UUID" value="7a4a68c4-e7a1-4b9b-93a2-cf3d84914217"/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.mcu.debug.connections.osbdm.cfvx.CommandLineArgs" value=""/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.cdt.debug.cw.CW_SHADOWED_PREF.Embedded Initialization.simulator" value=""/>
+<property key="propertySet.[cw.ide.settingscache].hidden.HostID" value="com.freescale.cdt.debug.cw.core.ui.rse.systemtype.bareboard.hardware.110223143933+0100"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.freescale.cdt.debug.cw.core.settings.GdiConnection.Common.PhysicalConnectionAttributeBase" value="com.pemicro.mcu.debug.connections.pne.cfv234."/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.Library" value="cf_pne_gdi"/>
+<property key="propertySet.[cw.dbg.ct.targetConnLost].RetryTimeout" value="20"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].useMemoryConfigFile" value="true"/>
+<property key="propertySet.[cw.dbg.ct.targetConnLost].retryPromptUserActionOn" value="true"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.CommandLineArgs" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_RESET_DELAY" value="0"/>
+<property key="propertySet.[cw.dbg.main].systemType" value="com.freescale.cw.system.coldfire.MCF5225X.MCF52259"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_SPECIFY_IP" value="127.0.0.1"/>
+<property key="host.promptable" value="false"/>
+<property key="propertySet.[OptionalPropertySet].enableConnectorServicesPropertyPage" value="false"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].useInitFile" value="true"/>
+<property key="host.type" value="com.freescale.cdt.debug.cw.core.ui.rse.systemtype.bareboard.hardware"/>
+<property key="host.defaultUser" value=""/>
+<property key="propertySet.[cw.dbg.ct.bareboard.gdi].logData" value="false"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].executeReset" value="true"/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.mcu.debug.connections.osbdm.cfvx.ConfigFile" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.freescale.cdt.debug.cw.core.settings.GdiConnection.Common.SimulatorConnectionAttributeBase" value=""/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.mcu.debug.connections.osbdm.cfvx.names_of_user_added_attributes" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_PORT" value="1"/>
+<property key="host.address" value=""/>
+<property key="propertySet.[cw.dbg.ct].Connection Type" value="com.freescale.mcu.debug.connections.osbdm.cfvx"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_SPECIFY_NETWORKCARD_ENABLED" value="0"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.ConfigFile" value=""/>
+<property key="host.defaultEncoding" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_PCI_DELAY" value="1"/>
+<property key="propertySet.[cw.ide.settingscache].hidden.TimeStamp" value="1300184734172"/>
+<property key="host.description" value=""/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_SPECIFY_NETWORKCARD" value="127.0.0.1"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].initPath" value="${MQX_ROOT_DIR}\lib\twrmcf52259.cw10\bsp\dbg\twrmcf52259.cfg"/>
+<property key="propertySet.[cw.dbg.ct.targetConnLost].RetryWithTimeoutOn" value="false"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_interface_selection" value="3"/>
+<property key="propertySet.[cw.dbg.ct.targetConnLost].TerminateConnectionOn" value="false"/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.cdt.debug.cw.core.settings.GdiConnection.Common.PhysicalConnectionAttributeBase" value="com.freescale.mcu.debug.connections.osbdm.cfvx."/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.cdt.debug.cw.core.settings.GdiConnection.Common.SimulatorConnectionAttributeBase" value=""/>
+<property key="propertySet.[OptionalPropertySet].enableGenericHostPropertyPage" value="false"/>
+<property key="host.name" value="TWRMCF52259 OSBDM"/>
+<property key="propertySet.[com.pemicro.mcu.debug.connections.pne.cfv234].com.pemicro.mcu.debug.connections.pne.cfv234.STARTUP_USE_BDM_INTERFACE_FOR_FREEZE_DETECTION" value="false"/>
+<property key="propertySet.[cw.dbg.ct.bareboard].runOutOfReset" value="false"/>
+<property key="propertySet.[com.freescale.mcu.debug.connections.osbdm.cfvx].com.freescale.mcu.debug.connections.osbdm.cfvx.Library" value="E_osbdm-jm60_gdi_cfv234"/>
+</properties>
+</host>
+</APSC_Memento>

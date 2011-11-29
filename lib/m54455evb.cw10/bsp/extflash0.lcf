@@ -1,0 +1,204 @@
+
+MEMORY
+{
+   flash0_vectors  (RW) : ORIGIN = 0x04000000, LENGTH = 0x00000600  # FLASH0 - Vector table
+   flash0_code     (RX) : ORIGIN = 0x04000600, LENGTH = 0x0007FA00  # FLASH0 - Code + Const data
+   flash1          (RW) : ORIGIN = 0x00000000, LENGTH = 0x01000000  # FLASH1
+   sdram_cached    (RWX): ORIGIN = 0x40000000, LENGTH = 0x08000000  # SDRAM  - 128 MB RW cached data + copy of code
+   sdram_uncached  (RW) : ORIGIN = 0x48000000, LENGTH = 0x08000000  # SDRAM  - 128 MB RW uncached data
+   sram            (RW) : ORIGIN = 0x80000000, LENGTH = 0x00008000  # SRAM
+
+   # kernel space starts after RAM variables (Location of MQX Kernel data + MQX heap), end of cached memory
+   end_of_kd       (RW) : ORIGIN = 0x47FFFFF0, LENGTH = 0x00000000
+   # end of uncached memory space
+   end_of_uncached (RW) : ORIGIN = 0x4FFFFFF0, LENGTH = 0x00000000
+
+   # Boot stack reused by MQX Kernel data
+   bstack          (RW) : ORIGIN = 0x80007A00, LENGTH = 0x00000200  # Boot stack
+   end_bstack      (RW) : ORIGIN = 0x80007BFF, LENGTH = 0x00000000
+}
+
+KEEP_SECTION { .vectors_rom, .vectors_ram }
+
+SECTIONS
+{
+    ___EXTERNAL_SDRAM_BASE = 0x40000000;
+    ___EXTERNAL_SDRAM_SIZE = 0x10000000;
+
+    ___INTERNAL_SRAM_BASE  = 0x80000000;
+    ___INTERNAL_SRAM_SIZE  = 0x00008000;
+
+    ___FLASH1_BASE     = 0x00000000;
+    ___FLASH0_BASE     = 0x04000000;
+      
+   # MQX link time configurations
+   ___DEFAULT_PROCESSOR_NUMBER       = 1;
+   ___DEFAULT_INTERRUPT_STACK_SIZE   = 10240;
+   ___KERNEL_DATA_VERIFY_ENABLE      = 0;    # Test SDRAM read/write
+
+
+    .vectors :
+    {
+        ___VECTOR_TABLE_ROM_START = .;      # Runtime vector table in rom
+        *(.vectors_rom)
+        . = ALIGN (0x4); 
+    } > flash0_vectors
+    
+    .main_application :
+    {
+        *(S_BOOT)
+        *(IPSUM)
+        *(.init)
+
+        # boot 
+        OBJECT(___boot, *)       
+        OBJECT(___boot_exception, *)       
+
+        # startup code from CodeWarrior library 
+
+        OBJECT(_simple_block_copy, *)       
+        OBJECT(___copy_rom_section, *)       
+        OBJECT(___copy_rom_sections_to_ram, *)       
+        
+        OBJECT(__ExitProcess, *)       
+        OBJECT(___block_copy_sections, *)       
+        OBJECT(___fix_addr_references, *)       
+        OBJECT(_clear_mem, *)       
+        OBJECT(__start, *)
+        OBJECT(___initialize_hardware, *)
+        OBJECT(___initialize_OS, *)
+
+        *(.fini)
+        *(.eini)
+        *(.ctors)
+        *(.dtors)
+        .= ALIGN(0x4);
+        *(.rdata)
+        .= ALIGN(0x4);
+        *(.exception)
+        . = ALIGN(0x4);
+        __exception_table_start__ = .;
+        EXCEPTION
+        __exception_table_end__ = .;
+        
+        . = ALIGN(0x10);
+        ___sinit__ = .;
+        STATICINIT
+        
+        . = ALIGN(0x4);
+        ___COPY_OF_CODE = .;
+    } > flash0_code
+   
+
+    .sram_sec :
+    {
+        *(.usb_hs_buffer)
+    } > sram
+
+   .main_application_code : AT(___COPY_OF_CODE)
+   {
+        . = ALIGN(0x10000);
+        ___CACHED_CODE_START = .;
+        ___VECTOR_TABLE_RAM_START = .;      # Runtime vector table in ram
+          *(.vectors_ram)
+        
+        .= ALIGN(0x4);
+        *(.rodata)
+
+        .= ALIGN(0x4);
+        *(KERNEL)
+
+        *(.text)    
+        
+        . = ALIGN(0x10);
+        ___CACHED_CODE_END = .;
+   } > sdram_cached
+
+   ___COPY_OF_DATA = ___COPY_OF_CODE + SIZEOF(.main_application_code);
+   
+   .main_application_data : AT(___COPY_OF_DATA)
+   {
+        . = ALIGN(0x10);   
+        ___CACHED_DATA_START = .;
+        __START_DATA = .;
+        *(.data)
+        __END_DATA = .;
+
+        . = ALIGN(0x4);
+        __START_SDATA = .;
+        *(.sdata)
+        __END_SDATA = .;
+        
+        . = ALIGN(0x4);
+        __SDA_BASE  = .;
+        __SDA_BASE_ = __SDA_BASE;
+
+    } >> sdram_cached
+
+
+    .main_application_bss :
+    {
+        . = ALIGN(0x4);
+        __START_SBSS = .;
+        *(.sbss)
+        *(SCOMMON)
+        __END_SBSS = .;
+
+        __START_BSS = .;
+        *(.bss)
+        *(COMMON)
+        . = ALIGN(0x10);
+        __END_BSS = .;
+    } >> sdram_cached   
+
+    .kernel_data :
+    {
+        ___KERNEL_DATA_START = ALIGN(0x10);
+    }
+
+    .end_of_kernel_data :
+    {
+        ___KERNEL_DATA_END = .;
+        ___CACHED_DATA_END = .;
+    } > end_of_kd
+   
+    .uncached_memory :
+    {
+        ___UNCACHED_DATA_START = ALIGN(0x10);
+    } > sdram_uncached
+   
+    .uncached_memory_end :
+    {
+        ___UNCACHED_DATA_END = .;
+    } > end_of_uncached
+
+    .boot_stack :
+    {
+        _stack_end = .;
+    } > bstack
+    
+    .end_of_boot_stack:
+    {
+        _stack_addr  = .;
+        __SP_INIT    = .;
+        ___BOOT_STACK_ADDRESS = .;
+    } > end_bstack
+   
+    # Locate the ROM copy table into ROM after the initialized data
+    _romp_at = ___COPY_OF_DATA + SIZEOF(.main_application_data);
+
+    .romp : AT (_romp_at)
+    {
+        __S_romp = _romp_at;
+        WRITEW(___COPY_OF_DATA);                   #ROM start address
+        WRITEW(ADDR(.main_application_data));      #RAM start address
+        WRITEW(SIZEOF(.main_application_data));    #size of application data
+        WRITEW(___COPY_OF_CODE);                   #ROM code start address
+        WRITEW(ADDR(.main_application_code));      #RAM code start address
+        WRITEW(SIZEOF(.main_application_code));    #size of code
+        WRITEW(0);
+        WRITEW(0);
+        WRITEW(0);
+    }
+
+}
