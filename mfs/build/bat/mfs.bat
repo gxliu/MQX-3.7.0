@@ -1,3 +1,16 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+rm -f *.h
+
+cp -f ../../../mfs/source/include/mfs.h .
+cp -f ../../../mfs/source/include/mfs_cnfg.h .
+cp -f ../../../mfs/source/include/mfs_rev.h .
+cp -f ../../../mfs/source/include/part_mgr.h .
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory

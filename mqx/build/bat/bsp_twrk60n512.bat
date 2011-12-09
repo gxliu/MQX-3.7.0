@@ -1,3 +1,110 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+gen_files_copy_skip()
+{
+  source `dirname $0`/write_readme.bat > ../twrk60n512_lib.txt
+}
+
+comp_done()
+{
+  cp -f ../../../mqx/source/bsp/twrk60n512/bsp.h .
+  cp -f ../../../mqx/source/bsp/twrk60n512/bsp_rev.h .
+  cp -f ../../../mqx/source/bsp/twrk60n512/twrk60n512.h .
+
+  cp -f ../../../mqx/source/io/adc/adc.h .
+  cp -f ../../../mqx/source/io/adc/kadc/adc_kadc.h .
+  cp -f ../../../mqx/source/io/io_dun/io_dun.h .
+  cp -f ../../../mqx/source/io/io_mem/io_mem.h .
+  cp -f ../../../mqx/source/io/io_mem/iomemprv.h .
+  cp -f ../../../mqx/source/io/pcb/io_pcb.h .
+  cp -f ../../../mqx/source/io/pcb/mqxa/pcb_mqxa.h .
+  cp -f ../../../mqx/source/io/io_null/io_null.h .
+  cp -f ../../../mqx/source/io/serial/serial.h  .
+  cp -f ../../../mqx/source/io/serial/serl_kuart.h .
+  cp -f ../../../mqx/source/io/lwgpio/lwgpio.h .
+  cp -f ../../../mqx/source/io/lwgpio/lwgpio_kgpio.h .
+  cp -f ../../../mqx/source/io/gpio/io_gpio.h .
+  cp -f ../../../mqx/source/io/gpio/kgpio/io_gpio_kgpio.h .
+  cp -f ../../../mqx/source/io/spi/spi.h .
+  cp -f ../../../mqx/source/io/spi/spi_dspi.h .
+  cp -f ../../../mqx/source/io/can/flexcan/kflexcan.h .
+  cp -f ../../../mqx/source/io/usb/usb_bsp.h .
+  cp -f ../../../mqx/source/io/rtc/krtc.h .
+  cp -f ../../../mqx/source/io/rtc/rtc.h .
+  cp -f ../../../mqx/source/io/i2c/i2c.h  .
+  cp -f ../../../mqx/source/io/i2c/i2c_ki2c.h .
+  cp -f ../../../mqx/source/io/tfs/tfs.h .
+  cp -f ../../../mqx/source/io/flashx/flashx.h .
+  cp -f ../../../mqx/source/io/flashx/freescale/flash_kinetis.h .
+  cp -f ../../../mqx/source/io/flashx/freescale/flash_mk60.h .
+  cp -f ../../../mqx/source/io/esdhc/esdhc.h .
+  cp -f ../../../mqx/source/io/sdcard/sdcard.h .
+  cp -f ../../../mqx/source/io/sdcard/sdcard_spi/sdcard_spi.h .
+  cp -f ../../../mqx/source/io/sdcard/sdcard_esdhc/sdcard_esdhc.h .
+  cp -f ../../../mqx/source/io/enet/ethernet.h .
+  cp -f ../../../mqx/source/io/enet/enet.h .
+  cp -f ../../../mqx/source/io/enet/enet_wifi.h .
+  cp -f ../../../mqx/source/io/enet/macnet/macnet_mk60.h .
+  cp -f ../../../mqx/source/io/enet/macnet/macnet_1588.h .
+  cp -f ../../../mqx/source/io/enet/phy/phy_dp83xxx.h .
+  cp -f ../../../mqx/source/io/tchres/tchres.h .
+
+  mkdir -p Generated_Code
+  cd Generated_Code
+  
+  rm -f *.h
+
+  cp -f ../../../../mqx/source/bsp/twrk60n512/PE_LDD.h .
+  
+  if [ "$2" == "iar" ]; then
+    gen_files_copy_skip
+  fi
+  
+  if [ -e ../../../../mqx/build/cw10/bsp_twrk60n512/Generated_Code/PE_LDD.h ]; then
+    cp -f ../../../../mqx/build/cw10/bsp_twrk60n512/Generated_Code/*.h .
+    cp -f ../../../../mqx/build/cw10/bsp_twrk60n512/Sources/*.h .
+  else
+    gen_files_copy_skip
+  fi
+
+}
+
+comp_cw()
+{
+  mkdir -p dbg
+  cp -f ../../../mqx/source/bsp/twrk60n512/cw/intram.lcf .
+  cp -f ../../../mqx/source/bsp/twrk60n512/cw/intflash.lcf .
+  cp -f ../../../mqx/source/bsp/twrk60n512/cw/dbg/twrk60n512.mem ./dbg
+  cp -f ../../../mqx/source/bsp/twrk60n512/cw/dbg/init_kinetis.tcl ./dbg
+  cp -f ../../../mqx/source/bsp/twrk60n512/cw/dbg/mass_erase_kinetis.tcl ./dbg
+  comp_done
+}
+
+comp_iar()
+{
+  comp_done
+}
+
+for f in ../../../config/common/*.h; do
+  cp -f ../../../mqx/source/include/dontchg.h ../`basename $f`
+  cat $f >> ../`basename $f`
+done
+
+for f in ../../../config/twrk60n512/*.h; do
+  cp -f ../../../mqx/source/include/dontchg.h ../`basename $f`
+  cat $f >> ../`basename $f`
+done
+
+if [ "$2" == "iar" ]; then
+ comp_iar
+else
+ comp_cw
+fi
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory

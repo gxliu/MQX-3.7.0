@@ -1,3 +1,15 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+rm -f *.h
+
+source `dirname $0`/usb_hdk.bat
+
+cp -f ../../../../usb/host/source/host/ehci/*.h .
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory

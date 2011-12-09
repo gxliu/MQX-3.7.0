@@ -1,3 +1,16 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+rm -f *.h
+
+source `dirname $0`/usb_ddk.bat $1
+
+cp -f ../../../../usb/device/source/include/usbhs/usbprv_hs.h .
+cp -f ../../../../usb/device/source/include/usbhs/usbhs_dev_main.h .
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory

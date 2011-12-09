@@ -1,3 +1,31 @@
+#!/bin/sh
+
+isdir()
+{
+ cd $1
+}
+
+if [ "$1" == "" ]; then
+ return 0
+fi
+
+if [ ! -e "$1" ]; then
+ return 2
+fi
+
+if [ -d "$1" ]; then
+ isdir $1
+ return 0
+fi
+
+if [ ! -d `dirname $1` ]; then
+ return 2
+fi
+
+cd `dirname $1`
+
+return 0
+
 @echo off
 
 rem Without any argument, do nothing and assume the directory is already set

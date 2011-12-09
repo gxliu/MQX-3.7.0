@@ -1,3 +1,79 @@
+#!/bin/sh
+
+comp_cw()
+{
+  cp -f ../../../mqx/source/psp/cortex/cw_comp.h  .
+}
+
+comp_iar()
+{
+  cp -f ../../../mqx/source/psp/cortex/iar_comp.h  .
+}
+
+cp -f ../../../mqx/source/psp/cortex/psp.h  .
+cp -f ../../../mqx/source/psp/cortex/psptypes.h  .
+cp -f ../../../mqx/source/psp/cortex/psp_cpu.h  .
+cp -f ../../../mqx/source/psp/cortex/psp_rev.h  .
+cp -f ../../../mqx/source/psp/cortex/psp_time.h  .
+cp -f ../../../mqx/source/psp/cortex/psp_math.h  .
+cp -f ../../../mqx/source/psp/cortex/psp_comp.h  .
+
+cp -f ../../../mqx/source/psp/cortex/cortex.h  .
+
+#cp -f ../../../mqx/source/psp/cortex/MK40N512MD100.h .
+#cp -f ../../../mqx/source/psp/cortex/MK60N512MD100.h .
+
+cp -f ../../../mqx/source/psp/cortex/psp_cpudef.h  .
+
+cp -f ../../../mqx/source/psp/cortex/psp_supp.h  .
+
+cp -f ../../../mqx/source/include/eds.h  .
+cp -f ../../../mqx/source/include/edserial.h  .
+cp -f ../../../mqx/source/include/event.h  .
+cp -f ../../../mqx/source/include/fio.h  .
+cp -f ../../../mqx/source/include/gen_rev.h  .
+cp -f ../../../mqx/source/include/io.h  .
+cp -f ../../../mqx/source/include/io_rev.h  .
+cp -f ../../../mqx/source/include/ipc.h  .
+cp -f ../../../mqx/source/include/ipc_pcb.h  .
+cp -f ../../../mqx/source/include/klog.h  .
+cp -f ../../../mqx/source/include/log.h  .
+cp -f ../../../mqx/source/include/lwevent.h  .
+cp -f ../../../mqx/source/include/lwlog.h  .
+cp -f ../../../mqx/source/include/lwmem.h  .
+cp -f ../../../mqx/source/include/lwmsgq.h  .
+cp -f ../../../mqx/source/include/lwtimer.h  .
+cp -f ../../../mqx/source/include/message.h  .
+cp -f ../../../mqx/source/include/mqx.h  .
+cp -f ../../../mqx/source/include/mqx_cpudef.h  .
+cp -f ../../../mqx/source/include/mqx_cnfg.h .
+cp -f ../../../mqx/source/include/mqx_ioc.h  .
+cp -f ../../../mqx/source/include/mqx_str.h  .
+cp -f ../../../mqx/source/include/mutex.h  .
+cp -f ../../../mqx/source/include/name.h  .
+cp -f ../../../mqx/source/include/part.h  .
+cp -f ../../../mqx/source/include/pcb.h  .
+cp -f ../../../mqx/source/include/posix.h  .
+
+#cp -f ../../../mqx/source/include/rterrchk.h  .
+
+cp -f ../../../mqx/source/include/sem.h  .
+cp -f ../../../mqx/source/include/timer.h  .
+cp -f ../../../mqx/source/include/watchdog.h .
+cp -f ../../../mqx/source/include/ioctl.h .
+
+cp -f ../../../mqx/source/io/serial/serial.h .
+
+cp -f ../../../mqx/source/tad/tad.h .
+
+if [ "$2" == "iar" ]; then
+ comp_iar
+else
+ comp_cw
+fi
+
+return 0
+
 @echo off
 
 attrib -R *

@@ -1,3 +1,65 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+rm -f *.h
+
+cp -f ../../../rtcs/source/include/select.h .
+cp -f ../../../rtcs/source/include/ftp.h .
+cp -f ../../../rtcs/source/include/ftpc.h .
+cp -f ../../../rtcs/source/include/ftpd.h .
+cp -f ../../../rtcs/source/include/ftpd_msg.h .
+cp -f ../../../rtcs/source/include/rtcsvers.h .
+cp -f ../../../rtcs/source/include/rtcs.h .
+cp -f ../../../rtcs/source/include/rtcsrtos.h .
+cp -f ../../../rtcs/source/include/rtcstime.h .
+cp -f ../../../rtcs/source/include/rtcscfg.h .
+cp -f ../../../rtcs/source/include/rtcs_in.h .
+cp -f ../../../rtcs/source/include/rtcshdlc.h .
+cp -f ../../../rtcs/source/include/pppfsm.h .
+cp -f ../../../rtcs/source/include/ppphdlc.h .
+cp -f ../../../rtcs/source/include/ppp.h .
+cp -f ../../../rtcs/source/include/dns.h .
+cp -f ../../../rtcs/source/include/svc.h .
+cp -f ../../../rtcs/source/include/svcauth.h .
+cp -f ../../../rtcs/source/include/xdr.h .
+cp -f ../../../rtcs/source/include/dhcp.h .
+cp -f ../../../rtcs/source/include/rpctypes.h .
+cp -f ../../../rtcs/source/include/rtcsrpc.h .
+cp -f ../../../rtcs/source/include/rpcmsg.h .
+cp -f ../../../rtcs/source/include/clnt.h .
+cp -f ../../../rtcs/source/include/pmap.h .
+cp -f ../../../rtcs/source/include/pmapif.h .
+cp -f ../../../rtcs/source/include/auth.h .
+# cp -f ../../../rtcs/source/include/iodun.h .
+cp -f ../../../rtcs/source/include/rtcs25x.h .
+cp -f ../../../rtcs/source/include/rtcslog.h .
+cp -f ../../../rtcs/source/include/nat.h .
+cp -f ../../../rtcs/source/include/nat_session.h .
+cp -f ../../../rtcs/source/include/ipcfg.h .
+cp -f ../../../rtcs/source/include/iwcfg.h .
+
+cp -f ../../../rtcs/source/httpd/httpd.h .
+cp -f ../../../rtcs/source/httpd/httpd_types.h .
+cp -f ../../../rtcs/source/httpd/httpd_wrapper.h .
+cp -f ../../../rtcs/source/httpd/httpd_mqx.h .
+cp -f ../../../rtcs/source/httpd/httpd_supp.h .
+cp -f ../../../rtcs/source/httpd/httpd_cnfg.h .
+
+
+cp -f ../../../rtcs/source/include/snmp.h .
+cp -f ../../../rtcs/source/include/snmpcfg.h .
+cp -f ../../../rtcs/source/include/asn1.h .
+cp -f ../../../rtcs/source/include/rtcspcb.h .
+
+cp -f ../../../rtcs/source/include/tcp.h .
+cp -f ../../../rtcs/source/include/ip.h .
+
+cp -f ../../../rtcs/source/include/ipc_udp.h .
+
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory

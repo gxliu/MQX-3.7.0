@@ -1,3 +1,16 @@
+#!/bin/sh
+
+source `dirname $0`/verify_dir.bat $1
+
+rm -f *.h
+
+cp -f ../../../shell/source/include/shell.h .
+cp -f ../../../shell/source/include/sh_mfs.h .
+cp -f ../../../shell/source/include/sh_rtcs.h .
+cp -f ../../../shell/source/include/sh_enet.h .
+
+exit
+
 @echo off
 
 rem Make sure we are in target directory
