@@ -4,7 +4,7 @@ source `dirname $0`/verify_dir.bat $1
 
 gen_files_copy_skip()
 {
-  source `dirname $0`/write_readme.bat > ../twrk60n512_lib.txt
+  source `dirname $0`/write_readme.bat > ../../twrk60n512_lib.txt
 }
 
 comp_done()
